@@ -1,0 +1,76 @@
+.auth-page {
+	width: 100vw;
+	height: 150vh;
+	display: flex;
+	flex-direction: column;
+	padding-top: 2.5rem;
+	align-items: center;
+	background: #ffffff;
+	/* filter: blur(5px); */
+}
+.alert {
+	position: fixed;
+	top: 3rem;
+	width: 40%;
+	z-index: 3000;
+}
+.alert-text {
+	padding-left: 7rem !important;
+}
+.auth-model {
+	position: fixed;
+	padding-bottom: 3rem;
+	min-width: 90%;
+}
+
+.input-effect {
+	display: flex;
+	flex-direction: column;
+	margin-top: 1rem;
+}
+.effect {
+	display: block;
+	padding: 0.9rem;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	font-size: 1rem;
+}
+.effect:focus {
+	outline: none;
+
+	border: 1px solid blue;
+}
+.effect:focus:invalid {
+	border: 1px solid #ff7730;
+}
+
+@media only screen and (min-width: 570px) {
+	.auth-model {
+		width: 70%;
+	}
+	.signup-model {
+		width: 95%;
+	}
+}
+@media only screen and (min-width: 700px) {
+	.auth-model {
+		width: 60%;
+	}
+	.signup-model {
+		width: 85% !important;
+		margin-left: 1rem;
+	}
+}
+@media only screen and (min-width: 900px) {
+	.auth-model {
+		width: 40%;
+	}
+	.signup-model {
+		width: 70% !important;
+	}
+}
+@media only screen and (min-width: 1200px) {
+	.auth-model {
+		width: 50%;
+	}
+}
