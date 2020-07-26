@@ -4,6 +4,15 @@
 	margin-left: 0 !important;
 }
 
+.MuiAppBar-colorPrimary {
+	background-color: #ffffff !important;
+}
+.MuiAppBar-colorPrimary button {
+	color: #000000 !important;
+}
+.MuiSvgIcon-root {
+	color: #000000 !important;
+}
 a {
 	text-decoration: none;
 }
@@ -30,17 +39,18 @@ a {
 .brand-text {
 	margin-top: 4px !important;
 	letter-spacing: -1px;
-	/* font-size: 25px !important; */
 	font-weight: bold;
 	margin-left: -5px !important;
+	font-size: 18.72px !important;
 }
 .search-form {
 	display: none;
 }
-/* .form-search {
-	display: flex;
-	justify-content: space-between;
-} */
+.expand-wrap-icon .MuiSvgIcon-root {
+	cursor: pointer;
+	width: 35px !important;
+	height: 30px !important;
+}
 .search-small {
 	margin-right: 1rem;
 	display: flex;
@@ -52,7 +62,6 @@ a {
 }
 
 .search-small-icon {
-	/* padding: 0.4rem 0.5rem 0.3rem; */
 	cursor: pointer;
 	margin-top: 0.5rem;
 	border-radius: 50%;
@@ -117,6 +126,7 @@ a {
 .searchIcon-expand .search-small-icon:hover {
 	background-color: rgba(0, 0, 0, 0.15);
 }
+
 .searchIcon-expand .input-expand-wrap:hover {
 	background: rgba(0, 0, 0, 0.08);
 }
@@ -128,6 +138,9 @@ a {
 }
 .deskIcons > button:last-child:hover {
 	background-color: #ffffff !important;
+}
+.MuiTouchRipple-root {
+	display: none !important;
 }
 .singup-acount {
 	display: flex;

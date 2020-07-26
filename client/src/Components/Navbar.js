@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useRef, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {Box, Drawer, AppBar, Toolbar, IconButton, Typography, InputBase} from '@material-ui/core';
@@ -23,6 +23,23 @@ const Navbar = (props) => {
 	const classes = useStles();
 	const {handleChange, handleSearch, handleSubmit} = useContext(MainContext);
 
+	const ref = useRef(null);
+
+	useEffect(() => {
+		if (manue) {
+			const handleSidebarRight = (e) => {
+				if (ref.current && !ref.current.contains(event.target)) {
+					setManue(false);
+				}
+			};
+
+			document.addEventListener('click', handleSidebarRight);
+			return () => {
+				// Unbind the event listener on clean up
+				document.removeEventListener('click', handleSidebarRight);
+			};
+		}
+	});
 	const onSubmit = () => {};
 	const onDrop = (e) => {
 		const file = e.target.files[0];
@@ -66,11 +83,18 @@ const Navbar = (props) => {
 									<div className='arrow-icon'>
 										<ArrowBackIcon onClick={() => setExpend(false)} />
 									</div>
-
-									<div className='input-expand-wrap'>
-										<input type='text' placeholder='search...' className='input-small' />
-										<SearchIcon className='search-small-icon' onClick={() => setExpend(true)} />
-									</div>
+									{expend ? (
+										<form className='input-expand-wrap' onSubmit={(props, e) => handleSubmit(props, e)}>
+											<input type='text' placeholder='search...' className='input-small' onChange={handleSearch} />
+											<button className='search-small-icon'>
+												<SearchIcon />
+											</button>
+										</form>
+									) : (
+										<div className='input-expand-wrap expand-wrap-icon'>
+											<SearchIcon className='search-small-icon' onClick={() => setExpend(true)} />
+										</div>
+									)}
 								</div>
 								{user ? (
 									<Link to='/UploadVideo' className='router-link'>
@@ -98,7 +122,14 @@ const Navbar = (props) => {
 								>
 									{user ? (
 										<div className='avatar creator-info'>
-											<img src={`../../public/users/${user.photo}`} alt='user-avatar' className='avatar-pic' onClick={() => setManue(!manue)} />
+											<img
+												src={`../../public/users/${user.photo}`}
+												alt='user-avatar'
+												className='avatar-pic'
+												onClick={() => {
+													if (!manue) setManue(true);
+												}}
+											/>
 										</div>
 									) : (
 										<Link to='/Singup'>
@@ -115,7 +146,7 @@ const Navbar = (props) => {
 				</AppBar>
 			</Box>
 			{user && (
-				<div className={manue ? 'sidebar-right' : 'sidebar-right-toggle'}>
+				<div className={manue ? 'sidebar-right' : 'sidebar-right-toggle'} ref={ref}>
 					<div className='sidebar-lg'>
 						<div className='sidebar-right-hedader'>
 							<div className='avatar'>
@@ -153,13 +184,13 @@ const useStles = makeStyles((theme) => ({
 		right: 0,
 		left: 0,
 		zIndex: '100',
-		backgroundColor: 'red !important',
+		backgroundColor: '#ffffff !important',
 	},
 
 	YouTubeIcon: {
 		width: '2.5rem',
 		height: '1.8rem',
-		color: '#ff0000',
+		color: '#ff0000 !important',
 	},
 
 	search: {

@@ -39,8 +39,8 @@ const MainContextProvider = ({children}) => {
 		setSearch(e.target.value.toLowerCase());
 	};
 
-	const handleSubmit = (props, e) => {
-		e.preventDefault();
+	const handleSubmit = (event) => {
+		event.preventDefault();
 		console.log(search);
 		const query = queryString.stringify({search: search});
 		console.log('query', query);
@@ -48,10 +48,7 @@ const MainContextProvider = ({children}) => {
 		axios
 			.get(`/api/v1/videos/search?${query}`)
 			.then((res) => {
-				console.log(res);
 				setvideos(res.data.doc);
-				props.history.push('/');
-				window.location.reload();
 			})
 			.catch((err) => console.log(err.response));
 	};
