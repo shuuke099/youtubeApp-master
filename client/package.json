@@ -8,7 +8,7 @@
 		"@material-ui/lab": "^4.0.0-alpha.56",
 		"axios": "^0.19.2",
 		"core-js": "^2.6.11",
-		"moment": "^2.26.0",
+		"moment": "^2.29.4",
 		"query-string": "^6.13.1",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
